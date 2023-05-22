@@ -1,0 +1,3 @@
+*.efficientnet_v2_s.pth
+/captures
+*.labels_dino.csv
