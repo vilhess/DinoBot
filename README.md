@@ -1,4 +1,4 @@
-# DinoBot
+# DinoBot (readme not finished)
 
 DinoBot is a bot designed to play the Chrome Dinosaur Game using the EfficientNet model. It is highly inspired by the code from Akshay Ballal on [https://betterprogramming.pub/how-to-build-an-ai-powered-game-bot-with-pytorch-and-efficientnet-f0d47733a0e7]
 
@@ -6,21 +6,21 @@ DinoBot is a bot designed to play the Chrome Dinosaur Game using the EfficientNe
 
 To run DinoBot, you need to install the required dependencies by using 
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 1. Clone this repository:
 
-git clone https://github.com/vilhess/DinoBot.git
+`git clone https://github.com/vilhess/DinoBot.git`
 
 2. Navigate to the project directory:
 
-cd DinoBot
+`cd DinoBot`
 
 3. Start the Chrome Dinosaur Game in your browser.
 
 4. Run the bot:
 
-python bot.py
+`python bot.py`
 
 The bot will automatically connect to the game and start playing.
 
