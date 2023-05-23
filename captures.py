@@ -15,19 +15,6 @@ if not os.path.exists("captures"):
 
 
 def keyboardCallBack(key: keyboard.KeyboardEvent):
-    '''
-    This function is called when a keyboard event occurs. It stores the key pressed in a buffer and sorts it.
-
-    ### Arguments : 
-    `key (KeyboardEvent)`
-
-    ### Returns : 
-    `None`
-
-    ### Example : 
-    `keyboardCallBack(key)`
-    '''
-
     global current_key
 
     if key.event_type == "down" and key.name not in buffer:
@@ -36,7 +23,7 @@ def keyboardCallBack(key: keyboard.KeyboardEvent):
     if key.event_type == "up":
         buffer.remove(key.name)
 
-    buffer.sort()  # Arrange the keys pressed in an ascending order
+    buffer.sort()
     current_key = " ".join(buffer)
 
 
@@ -47,16 +34,11 @@ if __name__ == "__main__":
 
     while (not keyboard.is_pressed("esc")):
 
-        # Capture image and save to the 'captures' folder with time and date along with the key being pressed
         image = cv2.cvtColor(np.array(ImageGrab.grab(
             bbox=(455, 260, 1055, 380))), cv2.COLOR_RGB2BGR)  # Adapt the bbox to your screen
-
-        # if key pressed embed the key pressed in the file name
         if len(buffer) != 0:
             cv2.imwrite("captures/" + str(datetime.now()).replace("-", "_").replace(":",
                         "_").replace(" ", "_")+" " + current_key + ".png", image)
-
-        # if no key pressed embed 'n' in the file name
         else:
             cv2.imwrite("captures/" + str(datetime.now()).replace("-",
                         "_").replace(":", "_").replace(" ", "_") + " n" + ".png", image)
