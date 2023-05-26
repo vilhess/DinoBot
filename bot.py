@@ -7,7 +7,7 @@ from torchvision.transforms import CenterCrop, Resize, Compose, ToTensor, Normal
 import torchvision
 
 
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
+device = 'mps'
 path = 'efficientnet_v2_s.pth'
 
 saved_model = torchvision.models.efficientnet_v2_s()

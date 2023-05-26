@@ -5,6 +5,7 @@ from torch.utils.data import Dataset, DataLoader, TensorDataset
 from dataset import DinoDataset, transformer
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from inceptionV3 import *
 
 
 key_frame = pd.read_csv('labels_dino.csv')
@@ -15,10 +16,9 @@ full_set = DinoDataset(root_dir="captures",
 full_loader = DataLoader(full_set, batch_size=1)
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-path = 'efficientnet_v2_s.pth'
+path = 'efficientnet_v3.pth'
 
-saved_model = torchvision.models.efficientnet_v2_s()
-saved_model.classifier = torch.nn.Linear(in_features=1280, out_features=2)
+saved_model = InceptionV3()
 saved_model.load_state_dict(torch.load(path))
 saved_model = saved_model.to(device)
 saved_mode = saved_model.eval()

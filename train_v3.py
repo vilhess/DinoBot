@@ -13,7 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from inceptionV3 import *
 
-path_v2 = 'efficientnet_v2_s.pth'  # for inception v2 from torch
+path = 'efficientnet_v3.pth'
 
 key_frame = pd.read_csv('labels_dino.csv')
 train, test = train_test_split(key_frame, test_size=0.2)
@@ -21,7 +21,7 @@ train, test = train_test_split(key_frame, test_size=0.2)
 train = pd.DataFrame(train)
 test = pd.DataFrame(test)
 
-batch_size = 8
+batch_size = 4
 
 trainset = DinoDataset(root_dir="captures",
                        dataframe=train, transform=transformer)
@@ -31,9 +31,8 @@ testset = DinoDataset(root_dir="captures",
                       dataframe=test, transform=transformer)
 testloader = DataLoader(testset, batch_size=batch_size)
 
-device = 'mps'
-model = torchvision.models.efficientnet_v2_s()
-model.classifier = torch.nn.Linear(in_features=1280, out_features=2)
+device = 'cpu'
+model = InceptionV3()
 
 model = model.to(device)
 criterion = torch.nn.CrossEntropyLoss()
