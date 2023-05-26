@@ -5,16 +5,36 @@ from PIL import ImageGrab
 import torch
 from torchvision.transforms import CenterCrop, Resize, Compose, ToTensor, Normalize
 import torchvision
+from inceptionV3 import InceptionV3
 
 
 device = 'mps'
-path = 'efficientnet_v2_s.pth'
+path_v2 = 'efficientnet_v2_s.pth'
+path_v3 = 'efficientnet_v3.pth'
 
-saved_model = torchvision.models.efficientnet_v2_s()
-saved_model.classifier = torch.nn.Linear(in_features=1280, out_features=2)
-saved_model.load_state_dict(torch.load(path))
-saved_model = saved_model.to(device)
-saved_mode = saved_model.eval()
+try:
+    saved_model_v2 = torchvision.models.efficientnet_v2_s()
+    saved_model_v2.classifier = torch.nn.Linear(
+        in_features=1280, out_features=2)
+    saved_model_v2.load_state_dict(torch.load(path_v2))
+    saved_model_v2 = saved_model_v2.to(device)
+    saved_model_v2 = saved_model_v2.eval()
+
+except:
+    print('train model first')
+
+
+try:
+    saved_model_v3 = InceptionV3()
+    saved_model_v3.load_state_dict(torch.load(path_v3))
+    saved_model_v3 = saved_model_v3.to(device)
+    saved_model_v3 = saved_model_v3.eval()
+
+except:
+    print('train model first')
+
+# change to saved_model_v3 if you want to use inception v3 but you have to train it first
+saved_model = saved_model_v2
 
 
 transformer = Compose([

@@ -1,5 +1,5 @@
 import pandas as pd
-from dataset import DinoDataset, transformer
+from dataset import DinoDataset
 from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
 import torchvision.models
@@ -12,6 +12,8 @@ import torch
 import numpy as np
 import matplotlib.pyplot as plt
 from inceptionV3 import *
+from dataset import DinoDataset, transformer
+
 
 path = 'efficientnet_v3.pth'
 

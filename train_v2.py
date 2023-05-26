@@ -13,7 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from inceptionV3 import *
 
-path_v2 = 'efficientnet_v2_s.pth'  # for inception v2 from torch
+path = 'efficientnet_v2_s.pth'  # for inception v2 from torch
 
 key_frame = pd.read_csv('labels_dino.csv')
 train, test = train_test_split(key_frame, test_size=0.2)

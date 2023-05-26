@@ -1,3 +1,4 @@
 *.pth
 /captures
 *.csv
+*.ipynb
