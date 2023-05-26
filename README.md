@@ -1,6 +1,6 @@
 # DinoBot
 
-DinoBot is a bot designed to play the Chrome Dinosaur Game using the EfficientNet model. It is highly inspired by the code from Akshay Ballal on [https://betterprogramming.pub/how-to-build-an-ai-powered-game-bot-with-pytorch-and-efficientnet-f0d47733a0e7]
+DinoBot is a bot designed to play the Chrome Dinosaur Game using the EfficientNet model (V2 or V3).
 
 ## Requirements
 
@@ -28,20 +28,20 @@ Before using the classification system, you need to collect training data. Run t
 
 ## Model Training
 
-Once you have collected enough images, you can train the classification model. Run the `train.py` script to automatically split the data into training and testing sets, and train the model on the training data. The trained model will be saved to a file named `efficientnet_v2_s.pth`.
+Once you have collected enough images, you can train the classification model. Run the `trainV2.py` or `trainV3.py` script to automatically split the data into training and testing sets, and train the model on the training data. The trained model will be saved to a file named `efficientnet_v2_s.pth` or `efficientnet_v3.pth`.
 
 ## Using the Trained Model
 
-After training the model, you can use it to predict jump actions in the Dino Run game. Run the `predict.py` script to capture screenshots of the game screen, preprocess them, and feed them into the trained model for prediction. Based on the predictions, the script will perform the necessary jump actions using the `keyboard` library.
+After training the models, you can use it to predict jump actions in the Dino Run game. Run the `bot.py` script to capture screenshots of the game screen, preprocess them, and feed them into the trained model for prediction. Based on the predictions, the script will perform the necessary jump actions using the `keyboard` library.
 
-Make sure you have the trained model file `efficientnet_v2_s.pth` in the same directory as the `predict.py` script before running it.
+Make sure you have the trained model file `efficientnet_v2_s.pth` or `efficientnet_v3.pth` in the same directory as the `bot.py` script before running it.
 
 ## Configuration of the Game Screen
 
-Please note that the `predict.py` script uses the `ImageGrab.grab()` function from the `PIL` library to capture the game screen. You may need to adjust the coordinates of the `bbox` parameter in this function in the script to match the area of the screen where the Dino Run game is displayed.
+Please note that the `bot.py` script uses the `ImageGrab.grab()` function from the `PIL` library to capture the game screen. You may need to adjust the coordinates of the `bbox` parameter in this function in the script to match the area of the screen where the Dino Run game is displayed.
 
 ## Acknowledgements
 
-This project was inspired by [akshayballal95](https://github.com/akshayballal95/dino). I borrowed the basic structure and some ideas from their code repository. Many thanks to the contributors of InspirationBot for their valuable work.
+This project was inspired by [akshayballal95](https://github.com/akshayballal95/dino), and also by [AnasBrital98](https://github.com/AnasBrital98/CNN-From-Scratch/)
 
 
