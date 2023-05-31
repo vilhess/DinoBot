@@ -35,11 +35,11 @@ class STEM(nn.Module):
     def forward(self, x):
         x = self.conv1(x)
         x = self.conv2(x)
-        x = self.conv3(x)  # 149 x 149 x 64
-        x = self.pool1(x)  # 147 x 147 x 64
-        x = self.conv4(x)  # 147 x 147 x 80
-        x = self.conv5(x)  # 147 x 147 x 192
-        x = self.pool2(x)  # 73 x 73 x 192
+        x = self.conv3(x)  
+        x = self.pool1(x)  
+        x = self.conv4(x)  
+        x = self.conv5(x)  
+        x = self.pool2(x)  
         return x
 
 
